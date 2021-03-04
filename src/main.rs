@@ -4,13 +4,13 @@
 
 use core::{panic::PanicInfo, ptr};
 
-const QEMU_UART0_VIRT: *mut u8 = 0x0900_0000 as *mut u8;
+mod arch;
+use arch::aarch64::qemu_virt::QEMU_UART0_VIRT;
 
 global_asm!(include_str!("start.s"));
 #[no_mangle]
-pub extern "C" fn boot() {
-    serial_log("Loading the kernel\n");
-    serial_log("Kernel Loaded\n");
+pub extern "C" fn boot() -> ! {
+    serial_log("UART driver loaded");
     loop {}
 }
 
@@ -20,11 +20,15 @@ fn on_panic(_info: &PanicInfo) -> ! {
 }
 
 fn serial_log(str: &str) {
-    let base: u64 = 0xFE000000 + 0x7e20100;
-
     for byte in str.bytes() {
-        unsafe {
-            ptr::write_volatile(base as *mut u8, byte);
-        }
+        serialc(byte)
+    }
+    serialc(0x0A); // Adds a \n to the end of serial_log
+}
+
+fn serialc(byte: u8) {
+    let uart_register = QEMU_UART0_VIRT;
+    unsafe {
+        ptr::write_volatile(uart_register as *mut u8, byte);
     }
 }
