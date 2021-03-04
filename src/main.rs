@@ -2,13 +2,13 @@
 #![no_main]
 #![feature(global_asm)]
 
-use core::panic::PanicInfo;
-
 mod arch;
+mod panic;
 
+// The virt arch
 global_asm!(include_str!("arch/aarch64/qemu_virt/start.s"));
 pub use arch::aarch64::qemu_virt::QEMU_UART0_VIRT;
-
+//
 mod kdriver;
 // Kernel public functions
 pub use kdriver::serial::{serial_log, serialc};
@@ -27,10 +27,9 @@ pub extern "C" fn boot() {
     serial_log("kernel fully loaded");
     serial_log("SPIN CPU INFINITLY");
 
-    loop {}
+    //    loop {}  // If commented out the kernel panics
 }
-
-#[panic_handler]
-fn on_panic(_info: &PanicInfo) -> ! {
-    loop {}
+#[no_mangle]
+pub extern "C" fn crash() {
+    panic!();
 }

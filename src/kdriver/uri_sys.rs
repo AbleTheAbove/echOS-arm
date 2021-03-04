@@ -7,5 +7,5 @@ fn _resolve(_uri: &str) -> [u8; URI_BYTE_LENGTH] {
 }
 */
 pub fn init() {
-    serial_log("Initialize the URI sys");
+    serial_log("Initialized the URI sys");
 }
