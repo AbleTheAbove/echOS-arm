@@ -9,7 +9,7 @@ pub fn serial_log(str: &str) {
     serialc(0x0A); // Adds a \n to the end of serial_log
 }
 
-fn serialc(byte: u8) {
+pub fn serialc(byte: u8) {
     let uart_register = QEMU_UART0_VIRT;
     unsafe {
         ptr::write_volatile(uart_register as *mut u8, byte);
