@@ -27,7 +27,7 @@ pub extern "C" fn boot() {
     serial_log("kernel file system driver loaded");
 
     // test kencrypt
-    kencrypt::encrypt();
+    kencrypt::test_encrypt();
     serial_log("kencrypt driver loaded");
 
     serial_log("kernel fully loaded");
