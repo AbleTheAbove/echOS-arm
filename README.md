@@ -25,3 +25,7 @@ ok so a vector based processor? Well guess what? Images are vector Based
 I can represent a picture with a `[[u8; 400]; 600]` and we have a 600x400 vector (well actually thats an array but shut up and let me talk). Now we have a CPU that can handle that natively? and if we optimize it for the GPU space and pray to ferris we can write a good driver that even half works we could beat *some* other GPUs and from there we tweak and turn and improve
 
 An arm SOC with a RISC-V  (RISCPi?) would be dope and I'd start work on a port now, Hell if I knew anything about jack shit hardware stuff I'd do it myself and learn to write the firmware to tie the two together. Preferable more logically than the RPi, with you know a serial bus? maybe a daughter board so I can pop my RISC-V GPU out like a bad stick of ram when I buy an upgrade
+
+Make a rust crate for the board and its daughter boards so that development is dead simple and dogfeed design a reference kernel or something to get some linux kernel guy to say "Dang thats cool" and port linux, and now we at least have a way in
+
+Does QEMU have a simple way to add a machine? I could mock one up *Pausing to search*
