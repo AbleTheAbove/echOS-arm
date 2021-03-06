@@ -28,4 +28,6 @@ An arm SOC with a RISC-V  (RISCPi?) would be dope and I'd start work on a port n
 
 Make a rust crate for the board and its daughter boards so that development is dead simple and dogfeed design a reference kernel or something to get some linux kernel guy to say "Dang thats cool" and port linux, and now we at least have a way in
 
-Does QEMU have a simple way to add a machine? I could mock one up *Pausing to search*
+Does QEMU have a simple way to add a machine? I could mock one up *Pausing to search* kind of
+
+a power led for each board and an `OK` led for each as well. Should it support hot swapping the graphics? Probably not! Would it be cool? Yes
