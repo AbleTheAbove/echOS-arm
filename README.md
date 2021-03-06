@@ -31,3 +31,5 @@ Make a rust crate for the board and its daughter boards so that development is d
 Does QEMU have a simple way to add a machine? I could mock one up *Pausing to search* kind of
 
 a power led for each board and an `OK` led for each as well. Should it support hot swapping the graphics? Probably not! Would it be cool? Yes
+
+TODO: Split this off into a separate repo and develop the idea further
