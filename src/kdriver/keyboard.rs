@@ -1,3 +1,3 @@
 /*
-Windows key => Bring up the app quick select
+mod/meta/super/Windows key => Bring up the menu
 */

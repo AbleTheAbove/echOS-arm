@@ -11,7 +11,7 @@ pub fn test_encrypt() -> &'static str {
     let key: GenericArray<u8, U32> = *GenericArray::from_slice(b"an example very very secret key.");
 
     serial_log("Pre cipher gen");
-    let cipher = Aes256GcmSiv::new(&key); // You need a [u8; 16] filled with random bytes
+    let cipher = Aes256GcmSiv::new(&key); //gets stuck here forever
 
     serial_log("pre nonce");
     let nonce = GenericArray::from_slice(b"unique nonce"); // 96-bits; unique per message
