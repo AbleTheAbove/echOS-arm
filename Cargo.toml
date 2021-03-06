@@ -10,4 +10,4 @@ edition = "2018"
 [dependencies.aes-gcm-siv]
 version="*"
 default-features = false
-features = ["heapless"]
+features = ["heapless", "aes"]
