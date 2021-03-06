@@ -14,5 +14,5 @@ pub fn get_metadata() -> MetaBlock {
 
     meta_data.free_space;
     meta_data.used_space;
-    return meta_data;
+    meta_data
 }

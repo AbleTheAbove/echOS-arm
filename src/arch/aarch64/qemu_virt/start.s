@@ -8,7 +8,7 @@ _start:
     mov     sp, x30
 
     bl      boot
-    bl      crash
+
 .equ PSCI_SYSTEM_OFF, 0x84000008
 .globl system_off
 system_off:

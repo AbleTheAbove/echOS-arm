@@ -9,12 +9,14 @@ mod panic;
 global_asm!(include_str!("arch/aarch64/qemu_virt/start.s"));
 pub use arch::aarch64::qemu_virt::QEMU_UART0_VIRT;
 //
+
 mod kdriver;
 // Kernel public functions
 pub use kdriver::serial::{serial_log, serialc};
 use kdriver::{kfs::get_metadata, uri_sys};
-
 // Kernel private functions
+
+use kdriver::kencrypt;
 
 #[no_mangle]
 pub extern "C" fn boot() {
@@ -24,12 +26,13 @@ pub extern "C" fn boot() {
     let _kfsmd = get_metadata();
     serial_log("kernel file system driver loaded");
 
-    serial_log("kernel fully loaded");
-    serial_log("SPIN CPU INFINITLY");
+    // test kencrypt
+    kencrypt::encrypt();
+    serial_log("kencrypt driver loaded");
 
-    //    loop {}  // If commented out the kernel panics
-}
-#[no_mangle]
-pub extern "C" fn crash() {
-    panic!();
+    serial_log("kernel fully loaded");
+    /*
+        serial_log("SPIN CPU INFINITLY");
+        loop {}  // If commented out the kernel panics
+    */
 }
