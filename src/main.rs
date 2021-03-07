@@ -20,17 +20,18 @@ use kdriver::kencrypt;
 
 #[no_mangle]
 pub extern "C" fn boot() {
-    serial_log("UART driver loaded");
+    serial_log("> UART driver loaded");
     uri_sys::init();
-    serial_log("uri-sys driver loaded");
+    serial_log("> uri-sys driver loaded");
     let _kfsmd = get_metadata();
-    serial_log("kernel file system driver loaded");
+    serial_log("> kernel file system driver loaded");
 
-    // test kencrypt
-    kencrypt::test_encrypt();
-    serial_log("kencrypt driver loaded");
-
-    serial_log("kernel fully loaded");
+    /* broken so comment out
+        // test kencrypt
+        kencrypt::test_encrypt();
+        serial_log("> kencrypt driver loaded");
+    */
+    serial_log("> kernel fully loaded");
     /*
         serial_log("SPIN CPU INFINITLY");
         loop {}  // If commented out the kernel panics
