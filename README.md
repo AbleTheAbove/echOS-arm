@@ -1,5 +1,7 @@
 # EchOS
 
+To be merged with (AursOS)[https://github.com/AbleTheAbove/aura-os]
+
 ## Tooling
 I can't exactly remember all the tools I installed, feel free to pr with any additions
 `cargo install cargo-xbuild`
