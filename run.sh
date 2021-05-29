@@ -1,5 +1,5 @@
 # This runs the kernel on the qemu virt machine
-cargo xbuild --release && \
+cargo xbuild --release &&
 qemu-system-aarch64 -machine virt \
 -cpu cortex-a53 \
 -display none \
